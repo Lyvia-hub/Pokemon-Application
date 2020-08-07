@@ -7,17 +7,17 @@ export class BorderCardDirective {
 
   private initialColor: string = '#f5f5f5';
   private defaultColor: string = '#009688';
-  private defaultHeight: number = 230;
+  private defaultHeight: number = 180;
   private backgroundColor: string = 'black';
-  private initialBackgroundColor: string = 'none';
+  private initialBackgroundColor: string = 'white';
   private initialTextColor: string = 'black';
   private textColor: string = 'white';
 
   constructor(private el: ElementRef) {
     this.setBorder(this.initialColor);
     this.setHeight(this.defaultHeight);
-    this.setBackground(this.backgroundColor);
-    this.settextColor(this.textColor);
+    this.setBackground(this.initialBackgroundColor);
+    this.settextColor(this.initialTextColor);
   }
 
   @Input('appBorderCard') borderColor: string; // alias
