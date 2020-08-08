@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Pokemon } from '../pokemon';
-import { POKEMONS } from '../mock-pokemons';
 
+import { PokemonsService } from '../pokemons.service';
 
 @Component({
   selector: 'app-detail-pokemon',
@@ -12,23 +12,19 @@ import { POKEMONS } from '../mock-pokemons';
 })
 export class DetailPokemonComponent implements OnInit {
 
-  // Liste de tous les Pokémons
-  pokemons: Pokemon[] = null;
-
   // Pokémon à afficher à l'utilisateur
   pokemon: Pokemon = null;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private pokemonsService: PokemonsService) { }
 
   ngOnInit(): void {
-    this.pokemons = POKEMONS; // récupérer tous les pokémons
+    // this.pokemons = this.pokemonsService.getPokemons();
 
-    let id = +this.route.snapshot.paramMap.get('id');
-    for (let i = 0; i < this.pokemons.length; i++) {
-      if (this.pokemons[i].id == id) {
-        this.pokemon = this.pokemons[i];
-      }
-    }
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.pokemon = this.pokemonsService.getPokemon(id);
   }
 
   // Fonction retour à la liste des cartes des pokemons
