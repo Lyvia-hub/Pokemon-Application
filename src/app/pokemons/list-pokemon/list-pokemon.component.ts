@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ListPokemonComponent implements OnInit {
   public pokemons: Pokemon[];
-  public title = 'Liste des Pokémons';
+  public title = 'Pokémons';
 
   constructor(private router: Router) { }
 
