@@ -12,7 +12,7 @@ import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
 
 import { PokemonsService } from './pokemons.service';
 import { SearchPokemonComponent } from './search-pokemon/search-pokemon.component';
-// import { LoaderPokemonComponent } from '../loader-pokemon/loader-pokemon.component';
+import { LoaderPokemonComponent } from '../loader-pokemon/loader-pokemon.component';
 
 
 
@@ -23,7 +23,7 @@ import { SearchPokemonComponent } from './search-pokemon/search-pokemon.componen
     EditPokemonComponent,
     SearchPokemonComponent,
     PokemonFormComponent,
-    // LoaderPokemonComponent,
+    LoaderPokemonComponent,
     BorderCardDirective,
     PokemonTypeColorPipe
   ],
