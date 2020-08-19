@@ -51,6 +51,18 @@ export class PokemonsService {
     );
   }
 
+  searchPokemons(term: string): Observable<Pokemon[]> {
+    if (!term.trim()) { // si champs de recherche vide
+      return of([]); // retourner un tableau vide
+    }
+
+    return this.http.get<Pokemon[]>(`${this.pokemonsUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found pokemons matching "${term}"`)),
+      catchError(this.handleError<Pokemon[]>('searchPokemons', []))
+    );
+  }
+
+  // Delete pokemon
   deletePokemon(pokemon: Pokemon): Observable<Pokemon> {
     const url = `${this.pokemonsUrl}/${pokemon.id}`;
     const httpOptions = {
