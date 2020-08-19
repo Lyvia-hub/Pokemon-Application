@@ -20,7 +20,12 @@ export class ListPokemonComponent implements OnInit {
 
   ngOnInit(): void {
     // Permet d'afficher tous les pokémons
-    this.pokemons = this.pokemonsService.getPokemons();
+    this.getPokemons();
+  }
+
+  getPokemons(): void {
+    this.pokemonsService.getPokemons()
+      .subscribe(pokemons => this.pokemons = pokemons);
   }
 
   // Permet d'accéder au détail concernant le pokémon sélectionné (-> autre composant)

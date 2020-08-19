@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
 import { Pokemon } from './pokemon';
 import { POKEMONS } from './mock-pokemons';
 
@@ -8,21 +12,43 @@ import { POKEMONS } from './mock-pokemons';
 })
 export class PokemonsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  // Retourne tous les pokémons
-  getPokemons(): Pokemon[] {
-    return POKEMONS;
+  private pokemonsUrl = 'api/pokemons';
+
+  // log
+  // tslint:disable-next-line: typedef
+  private log(log: string) {
+    // tslint:disable-next-line: no-console
+    console.info(log);
   }
-  // Retourne le pokémon avec l'identifiant passé en paramètre
-  getPokemon(id: number): Pokemon {
-    const pokemons = this.getPokemons();
 
-    for (let index of pokemons) {
-      if (id === index.id) {
-        return index;
-      }
-    }
+  // Handle Error
+  // tslint:disable-next-line: typedef
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
+  }
+
+  // GET Pokemons
+  getPokemons(): Observable<Pokemon[]> {
+    return this.http.get<Pokemon[]>(this.pokemonsUrl).pipe(
+      tap(_ => this.log(`fetched pokemons`)),
+      catchError(this.handleError('getPokemons', []))
+    );
+  }
+  // GET Pokemon:id
+  getPokemon(id: number): Observable<Pokemon> {
+    const url = `${this.pokemonsUrl}/${id}`;
+
+    return this.http.get<Pokemon>(url).pipe(
+      tap(_ => this.log(`fetched pokemon id=${id}`)),
+      catchError(this.handleError<Pokemon>(`getPokemon id=${id}`))
+    );
   }
 
   // Retourne la liste des types des Pokémons
