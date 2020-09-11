@@ -11,7 +11,7 @@ import { PokemonsService } from '../pokemons.service';
   styleUrls: ['./list-pokemon.component.css']
 })
 export class ListPokemonComponent implements OnInit {
-  public title = 'Pokémons';
+  public title = 'Pokedex';
   public pokemons: Pokemon[];
 
   constructor(
