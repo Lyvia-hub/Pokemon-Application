@@ -7,6 +7,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 
 import { PokemonsModule } from './pokemons/pokemons.module';
+import { LoginModule } from './login/login.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -19,6 +20,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    LoginModule,
     WelcomeComponent
   ],
   imports: [
