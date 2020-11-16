@@ -16,11 +16,13 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    LoginModule,
     WelcomeComponent
   ],
   imports: [
@@ -28,9 +30,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     PokemonsModule,
+    LoginModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
