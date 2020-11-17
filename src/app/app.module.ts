@@ -35,7 +35,7 @@ import { AuthGuard } from './auth-guard.service';
   ],
   providers: [
     AuthService,
-    AuthService
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
