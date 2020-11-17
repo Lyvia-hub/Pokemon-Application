@@ -35,11 +35,11 @@ export class DetailPokemonComponent implements OnInit {
 
   // Fonction retour à la liste des cartes des pokemons
   goBack(): void {
-    this.router.navigate(['/pokemons']);
+    this.router.navigate(['pokemon/all']);
   }
 
   goEdit(pokemon: Pokemon): void {
-    let link = ['/pokemon/edit', pokemon.id];
+    const link = ['pokemon/edit', pokemon.id];
     this.router.navigate(link);
   }
 

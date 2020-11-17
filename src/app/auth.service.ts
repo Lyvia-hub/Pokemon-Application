@@ -13,8 +13,8 @@ export class AuthService {
 
   // Connexion
   login(name: string, password: string): Observable<boolean> {
-    // Faites votre appel à un service d'authentification...
-    const isLoggedIn = (name === 'pikachu' && password === 'pikachu');
+    // Faire appel au service d'authentification...
+    const isLoggedIn = (name === 'admin' && password === 'admin');
 
     return of(true).pipe(
       delay(1000),

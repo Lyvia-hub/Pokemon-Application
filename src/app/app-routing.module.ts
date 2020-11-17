@@ -7,7 +7,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 // liste des routes sous forme de tableau
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
-  { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+  { path: '', redirectTo: 'pokemon/all', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
